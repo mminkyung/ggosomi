@@ -136,3 +136,12 @@ hr{
 .form{
     width : 300px;
 }
+
+#counter1,#counter2,#counter3 {
+     font-size:2.5rem;
+     z-index : 1000;
+     margin : 20px;
+     position : relative;
+    
+    
+}

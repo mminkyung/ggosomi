@@ -10,6 +10,8 @@ from django.utils.encoding import force_bytes
 from django.core.mail import EmailMessage
 from .tokens import account_activation_token
 from django.utils.encoding import force_bytes, force_text
+from gosoForm.models import Photo
+from django.core.paginator import Paginator
 # Create your views here.
 
 def home(request):
@@ -99,6 +101,13 @@ def update_profile(request, user_id):
 
 def mypage(request):
     user = request.user
+
+    page = request.GET.get('page')
+        
+    imagePost= Photo.objects.all().order_by('-id')
+    photo_paginator = Paginator(imagePost, 3)
+    page_photo = photo_paginator.get_page(page)
+
     if user.is_authenticated == False:
         err_mypage = 0
         return redirect('home')
@@ -109,10 +118,10 @@ def mypage(request):
         user_loc=user.profile.location
         user_name=user.username
         email=user.email
-        return render(request, 'mypage.html', {'name':user_name,'job':user_job, 'location':user_loc, 'email':email})
+        return render(request, 'mypage.html', {'imagePost':imagePost, 'page_photo' : page_photo,'name':user_name,'job':user_job, 'location':user_loc, 'email':email})
     else:
         users =  User.objects.all()
         user_job=user.profile.job
         user_loc=user.profile.location
         user_name=user.username
-        return render(request, 'staffpage.html', {'name':user_name,'job':user_job, 'location':user_loc, 'user_data':users})
+        return render(request, 'staffpage.html', {'imagePost':imagePost, 'page_photo' : page_photo,'name':user_name,'job':user_job, 'location':user_loc, 'user_data':users})

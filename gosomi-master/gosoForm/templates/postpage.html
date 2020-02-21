@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{%block content%}
+<br>
+<h1 class = "contact" >소식</h1>
+<br>
+{% for post in imagePost %}
+    <div class="panel" align="center">
+            <div class="panel-heading" style = "background-color : gray"><h4><a style = "color : white;" href = "{% url 'detail_post' post.id %}">{{post.title}}</a></h4></div>
+            <div class="panel-body" align = "center">
+            <img class="cardimg" src="{{post.image.url }}" alt=" Card image cap">
+            
+                <!-- {{post.comment}} -->
+              
+            </div>
+            </div>
+            {% endfor %}
+        >
+{% endblock %}

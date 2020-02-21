@@ -31,7 +31,8 @@ urlpatterns = [
     
     # 고소하기 url
     path('upload/', gosoForm.views.upload, name = "upload"),
-
+    path('photo/<int:post_id>', gosoForm.views.detail_post, name = "detail_post"),
+    path('mainpage/postpage', gosoForm.views.postpage , name = "postpage"),
     # 인증메일 보내기 url
     path('activate/<str:uid64>/<str:token>/', mainpage.views.activate, name='activate'),
 

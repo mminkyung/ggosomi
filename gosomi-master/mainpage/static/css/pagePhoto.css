@@ -1,0 +1,19 @@
+.panel{
+    z-index : 1000;
+    width : 30%;
+    height : auto;
+    border : 3px solid white;
+    float : left;
+}
+
+.panel-body{
+    z-index : 1000;
+   
+}
+
+.cardimg{
+    width : 100%;
+    height : 300px;
+    z-index : 1000;
+}
+

@@ -7,6 +7,10 @@
     <title>GOSOMI</title>
 
     <link rel = "stylesheet" href = "../static/css/home.css">
+    <link rel = "stylesheet" href = "../static/css/pagePhoto.css">
+    <link rel = "stylesheet" href = "../../gosoForm/static/detail_post.css">
+
+    <script type="text/javascript" src="../static/js/home.js"></script>
 
 </head>
 <body>
@@ -40,8 +44,46 @@
         </nav>
         {%block content%}
         {%endblock%}
+        <div class="coutereffect" style = "margin-top : 150px; float : left; padding : 20px;">
+            <p id="counter1" ></p>
+            <p id="counter2"></p>
+            <p id="counter3"></p>
+        </div>
+        
 
     </section>
+    <!-- 숫자효과 유저들 수 보여주기 -->
+    <script>
+        function numberCounter(target_frame, target_number) {
+            this.count = 0; this.diff = 0;
+            this.target_count = parseInt(target_number);
+            this.target_frame = document.getElementById(target_frame);
+            this.timer = null;
+            this.counter();
+        };
 
+        numberCounter.prototype.counter = function () {
+            var self = this;
+            this.diff = this.target_count - this.count;
+
+            if (this.diff > 0) {
+                self.count += Math.ceil(this.diff / 5);
+            }
+
+            this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            if (this.count < this.target_count) {
+                this.timer = setTimeout(function () { self.counter(); }, 20);
+            } else {
+                clearTimeout(this.timer);
+            }
+        };
+        // const choices_name = JSON.parse(user.size());
+        new numberCounter("counter1", 99999);
+        new numberCounter("counter2", 21565748);
+        new numberCounter("counter3", 121554864865);
+
+    </script>
+    
 </body>
 </html>

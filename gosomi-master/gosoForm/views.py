@@ -28,3 +28,14 @@ class HomeView(ListView):
     def get_queryset(self):
         user = self.request.user    # 로그인되어있는 사용자
         return user.photo_set.all().order_by('pub_date')
+
+
+def detail_post(request, post_id):
+    post_detail = get_object_or_404(Photo, pk = post_id)
+    return render(request, 'detail_post.html', {'post_detail':post_detail})
+
+
+def postpage(request):
+    user = request.user
+    imagePost= Photo.objects.all().order_by('-pub_date')
+    return render(request, 'postpage.html', {'imagePost' : imagePost})
