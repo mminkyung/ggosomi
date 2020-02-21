@@ -95,3 +95,24 @@ def update_profile(request, user_id):
     user = User.objects.get(pk=user_id)
     user.profile.job = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
     user.save()    
+
+
+def mypage(request):
+    user = request.user
+    if user.is_authenticated == False:
+        err_mypage = 0
+        return redirect('home')
+        #  return HttpResponse('사용자명이 이미 존재합니다.')
+
+    if user.is_staff == False:
+        user_job=user.profile.job
+        user_loc=user.profile.location
+        user_name=user.username
+        email=user.email
+        return render(request, 'mypage.html', {'name':user_name,'job':user_job, 'location':user_loc, 'email':email})
+    else:
+        users =  User.objects.all()
+        user_job=user.profile.job
+        user_loc=user.profile.location
+        user_name=user.username
+        return render(request, 'staffpage.html', {'name':user_name,'job':user_job, 'location':user_loc, 'user_data':users})

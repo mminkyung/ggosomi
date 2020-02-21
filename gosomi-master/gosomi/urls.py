@@ -26,12 +26,14 @@ urlpatterns = [
     path('', mainpage.views.home, name = "home"),
     path('logout/', mainpage.views.logout, name='logout'),
     path('signup/', mainpage.views.signup, name='signup'),
+    path('mypage/', mainpage.views.mypage, name = 'mypage'),
+   
     
-    
+    # 고소하기 url
     path('upload/', gosoForm.views.upload, name = "upload"),
 
+    # 인증메일 보내기 url
     path('activate/<str:uid64>/<str:token>/', mainpage.views.activate, name='activate'),
-
 
 ]
 
