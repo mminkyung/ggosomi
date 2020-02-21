@@ -14,7 +14,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dlstpgns0406@gmail.com' # ex) 관리자 메일
-EMAIL_HOST_PASSWORD =  ''# ex) 메일비밀번호
+EMAIL_HOST_PASSWORD =  'tpgns5974!'# ex) 메일비밀번호
 SERVER_EMAIL = 'dlstpgns0406@gmail.com' # ex) dlstpgns0406@gmail.com
 DEFAULT_FROM_MAIL = 'dlstpgns'
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainpage',
+    'gosoForm',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES = [
+    os.path.join(BASE_DIR, 'mainpage', 'static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

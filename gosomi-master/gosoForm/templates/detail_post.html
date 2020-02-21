@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{%block content%}
+
+<br>
+<hr>
+<div class = "post_detail">
+    <p><h3> {{post_detail.title}}</h3> {{post_detail.pub_date}}</p>
+    {% if user.username == post_detail.owner.username %}
+    <button class="deletepost"onclick="location.href='{% url 'deletephoto' post_detail.id %}'">삭제하기</button>    
+    {% endif %}
+    <hr>
+
+    <h4>글쓴이 : {{post_detail.owner.username}}</h4>
+    <hr>
+    <div class = "wrap">
+        <img class="post_detail_img" src="{{post_detail.image.url }}" alt=" Card image cap">
+    </div>  
+    <hr>
+    <br>
+    <h4>{{post_detail.comment}}</h4>
+   
+    <br>
+</div>
+{% endblock %}

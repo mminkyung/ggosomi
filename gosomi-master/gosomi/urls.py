@@ -15,14 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.conf.urls import url
 import mainpage.views
+import gosoForm.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mainpage.views.home, name = "home"),
     path('logout/', mainpage.views.logout, name='logout'),
     path('signup/', mainpage.views.signup, name='signup'),
-    # path('assign/', mainpage.views.assign, name='assign'),
+    
+    
+    path('upload/', gosoForm.views.upload, name = "upload"),
 
     path('activate/<str:uid64>/<str:token>/', mainpage.views.activate, name='activate'),
+
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
