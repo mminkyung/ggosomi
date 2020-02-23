@@ -125,3 +125,16 @@ def mypage(request):
         user_loc=user.profile.location
         user_name=user.username
         return render(request, 'staffpage.html', {'imagePost':imagePost, 'page_photo' : page_photo,'name':user_name,'job':user_job, 'location':user_loc, 'user_data':users})
+
+
+def checkid(request):
+    try:
+        user = User.objects.get(username=request.GET['username'])
+    except Exception as e:
+        user = None
+    result = {
+        'result':'success',
+        # 'data' : model_to_dict(user)  # console에서 확인
+        'data' : "not exist" if user is None else "exist"
+    }
+    return JsonResponse(result)

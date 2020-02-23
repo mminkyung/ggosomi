@@ -11,6 +11,8 @@
     <link rel = "stylesheet" href = "../../gosoForm/static/detail_post.css">
 
     <script type="text/javascript" src="../static/js/home.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 </head>
 <body>
@@ -84,6 +86,62 @@
         new numberCounter("counter3", 121554864865);
 
     </script>
+
+<script>
+	/* 중복체크! */
+	$(function(){
+		/* 아이디 수정했을 때 */
+		$('#username').change(function () {
+			$('#img-id').hide();
+			$('#checkid').show();
+		});
+
+		$('#checkid').click(function(){
+			var username = $('#username').val()
+			if(username == ''){
+				alert('아이디를 입력해주세요.')
+				return;
+			}
+
+			$.ajax({
+				url:'/signup/checkid?username='+username,
+				type:'get',
+				dataType:'json',
+				success:function(response){
+					if(response.result != 'success'){
+						console.error(response.data)
+						return;
+					}
+					if(response.data == 'exist'){
+						alert("존재하는 아이디 입니다");
+						$('#username').val('').focus();
+						return;
+					}else{
+						$('#img-idcheck').show();
+						$('#checkid').hide();
+						$("#join").attr("id_check_result", "success");
+						return;
+					}
+					// console.log(response)
+				},
+                error : function(xhr, error){
+					alert("서버와의 통신에서 문제가 발생했습니다.");
+					console.error("error : " + error);
+				}
+			})
+		});
+
+    $('#join-form').submit(function() {
+		   if($("#join-submit").attr("id_check_result") == "fail") {
+		      alert("id 중복체크를 해주시기 바랍니다.");
+		      $("#username").focus();
+		      return false;
+		   }
+		});
+
+		
+	});
+</script>
     
 </body>
 </html>

@@ -27,7 +27,8 @@ urlpatterns = [
     path('logout/', mainpage.views.logout, name='logout'),
     path('signup/', mainpage.views.signup, name='signup'),
     path('mypage/', mainpage.views.mypage, name = 'mypage'),
-   
+    path('signup/checkid/', mainpage.views.checkid, name='checkid'),
+
     
     # 고소하기 url
     path('upload/', gosoForm.views.upload, name = "upload"),
