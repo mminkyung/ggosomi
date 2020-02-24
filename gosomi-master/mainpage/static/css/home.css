@@ -53,24 +53,29 @@ section{
    padding-top:150px; 
 }
 
+/* 좌측 우측 묶는 통합 그리드 */
+.container{
+    margin : 100px 0 0 0;
+}
+
 /* 좌측 소개 문구 */
 .wrapper_left{
    position : relative;
-   float : left;
-   padding-top : 100px;
+   /* padding-top : 100px;
    padding-left : 80px;
-   width : 40%;
+   width : 40%; */
+}
+.subcomment{
+    border-bottom : 1px solid white;
+    padding-bottom : 50px;
 }
 
 /* 우측 로그인창 */
 #login-form{
     position : relative;
-    float : right;
-    width : 40%;
-    margin: 140px 200px 0px 0px;
-    font-size : 20px;
+    /* font-size : 20px; */
     background-color:rgba(0, 0, 0, 0.5);
-    width : 520px;
+    width : 100%;
     height : auto;
     padding : 10px;
 }
@@ -82,7 +87,7 @@ section h1{
 section p{ 
    margin-bottom: 20px; 
 } 
-h1,p,a,button,#login-form,input, table{ 
+h1,p,a,button,#login-form,input, table, hr{ 
    position: relative; 
    z-index:1000; 
    
@@ -107,10 +112,6 @@ table{
     margin-top : 50px;
     border-spacing: 5px;
     margin-bottom : 50px;
-}
-
-hr{
-    width : 80%;
 }
 
 
@@ -138,10 +139,19 @@ hr{
 }
 
 #counter1,#counter2,#counter3 {
-     font-size:2.5rem;
+     
      z-index : 1000;
-     margin : 20px;
+     /* margin : 20px; */
      position : relative;
+     width : 400px;
     
-    
+}
+
+.coutereffect{
+    text-align : left;
+    font-size : 2.0rem;
+}
+
+.row{
+    margin-bottom : 50px;
 }

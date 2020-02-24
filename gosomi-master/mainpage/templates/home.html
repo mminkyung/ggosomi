@@ -1,20 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
-
-        <form id="login-form" method="post" action="{% url 'home' %}">
-            {% csrf_token %}
-            <label class="login">ID</label>
-            <input name="userid" type="text">
-            <label class="login">PASSWORD</label>
-            <input name="password" type="password">
-            <input type="submit" value="LogIn">
-        </form>
-        
-        <div class="wrapper_left">
-            <h1>Take countermeasures against malicious comments...</h1>
-            <p>악플악플악플악플악플악플악플시러시러시러시러시러시러시러시러시러시러</p>
-            <button type="button" class="btn btn-info">Info1</button>
-            <button type="button" class="btn btn-info">Info2</button>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="wrapper_left">
+                <h1>Take countermeasures against malicious comments...</h1>
+                <p class = "subcomment">악플악플악플악플악플악플악플시러시러시러시러시러시러시러시러시러시러</p>
+                <!-- <button type="button" class="btn btn-info">Info1</button>
+                <button type="button" class="btn btn-info">Info2</button> -->
+                <hr>
+            </div>
         </div>
+        <div class="col">
+            <form id="login-form" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <label class="login">ID</label>
+                <input name="userid" type="text">
+                <label class="login">PW</label>
+                <input name="password" type="password">
+                <input type="submit" value="LogIn" style = "margin-left : 10px; background-color: black; color : white">
+            </form>
 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="coutereffect">
+                User : 
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="coutereffect">
+                <p id="counter1"></p>
+                <!-- <p id="counter3"></p> -->
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="coutereffect">
+                CounterMeasure :
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="coutereffect">
+                <p id="counter2"></p>
+                <!-- <p id="counter3"></p> -->
+            </div>
+        </div>
+    
+    </div>
+    
+</div>
+<div style = "width : 100%; height : 1000px; background-color : gray;">
+        sfdfdsf
+        </div>
 {% endblock %}
