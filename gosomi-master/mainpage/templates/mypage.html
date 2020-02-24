@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{%block content%}
+
+<h3>아이디 : {{name}}</h3>
+<h3>직 업 : {{job}}</h3>
+<h3>지 역 : {{location}}</h3>
+<h3>이메일 : {{email}}</h3>
+
+<p> <a class="btn btn-primary" href="{% url 'upload'%}" method="POST" enctype="multipart/form-data" style = "background-color : orange; border-color : orange">업로드</a> <a class="btn btn-primary" href = "{% url 'postpage' %}" style = "background-color : orange; border-color : orange">더보기</a></p>
+    <br>
+      {% for post in page_photo%} <!--imagePost -->
+      <div class="panel">
+        
+        <div class="panel-heading" ><h4 ><a style = "color : white;" href = "{% url 'detail_post' post.id %}">{{post.title}}</a></h4></div>
+        <div class="panel-body">
+          <img class="cardimg" src="{{post.image.url }}" alt=" Card image cap">
+          
+              <!-- {{post.comment}} -->
+          </div>
+        </div>
+          {% endfor %}
+{%endblock%}
