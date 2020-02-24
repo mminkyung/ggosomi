@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{%block content%}
+<br>
+<div class = "upload">
+  <h1> 고소하기</h1>
+<div class = "post_detail">
+  <form class = "upload_form" action = "{% url 'upload' %}" method="POST" enctype="multipart/form-data" style = "width : 90%">
+      {% csrf_token %}
+      {{ form.as_p }}
+      
+      <input type="submit" value="Upload"/>
+    </form>
+    
+  </div>
+</div>
+
+{% endblock %}

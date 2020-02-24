@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GOSOMI</title>
+
+	<link rel="stylesheet" type="text/css" href="../static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/pagePhoto.css">
+    <link rel="stylesheet" type="text/css" href="../../gosoForm/static/detail_post.css">
+
+    <script type="text/javascript" src="../static/js/home.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <ul>
+            <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="nav-item"><a href="{% url 'board' %}">악플러 고발</a></li>
+            <li class="nav-item"><a href="{% url 'upload' %}">고소하기</a></li>
+            
+            {% if user.is_authenticated %}
+            <li class="nav-item-le"><a href="{% url 'mypage' %}">마이페이지</a></li>
+            <li class="nav-item-le"><a href="{% url 'logout' %}" id="logout_button">로그아웃</a></li>
+        
+            {% else %}
+            <li class="nav-item-le"><a href="{% url 'signup' %}" id="signup_button">가입하기</a></li>
+            {% endif%}
+        </ul>
+    </nav>
+
+    
+    {%block content%}
+    {%endblock%}
+
+
+<script>
+	/* 중복체크! */
+	$(function(){
+		/* 아이디 수정했을 때 */
+		$('#username').change(function () {
+			$('#img-id').hide();
+			$('#checkid').show();
+		});
+
+		$('#checkid').click(function(){
+			var username = $('#username').val()
+			if(username == ''){
+				alert('아이디를 입력해주세요.')
+				return;
+			}
+
+			$.ajax({
+				url:'/signup/checkid?username='+username,
+				type:'get',
+				dataType:'json',
+				success:function(response){
+					if(response.result != 'success'){
+						console.error(response.data)
+						return;
+					}
+					if(response.data == 'exist'){
+						alert("존재하는 아이디 입니다");
+						$('#username').val('').focus();
+						return;
+					}else{
+						$('#img-idcheck').show();
+						$('#checkid').hide();
+						$("#join").attr("id_check_result", "success");
+						return;
+					}
+					// console.log(response)
+				},
+                error : function(xhr, error){
+					alert("서버와의 통신에서 문제가 발생했습니다.");
+					console.error("error : " + error);
+				}
+			})
+		});
+
+    $('#join-form').submit(function() {
+		   if($("#join-submit").attr("id_check_result") == "fail") {
+		      alert("id 중복체크를 해주시기 바랍니다.");
+		      $("#username").focus();
+		      return false;
+		   }
+		});
+
+		
+	});
+</script>
+    
+</body>
+</html>

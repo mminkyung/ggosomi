@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{%block content%}
+<h3><strong>{{name}} 관리자님 환영합니다</strong></h3>
+<br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">유저</th>
+        <th scope="col">직업</th>
+        <th scope="col">거주지</th>
+        <th scope="col">메일</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in user_data %}
+      <tr>
+        <th scope="row">-</th>
+        <td>{{data.username}}</td>
+        <td>{{data.profile.job}}</td>
+        <td>{{data.profile.location}}</td>
+        <td>{{data.email}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endblock %}

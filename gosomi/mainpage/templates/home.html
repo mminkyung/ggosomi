@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+
+    <div class="info">
+        <h1>악플러를 고발, 고소해 주세요.</h1>
+        <p class = "subcomment">건전한 사이버 문화를 지향합니다.</p>
+    </div>
+    <div class="wrapper">
+        <div class="wrapper-left">
+            <div class="user-count">
+                총 유저 수
+            </div>
+            <div class="user-num">
+                <p id="counter1"></p>
+            </div>
+            <div class="counter-count">
+                대응 사건 수 :
+            </div>
+            <div class="counter-num">
+                <p id="counter2"></p>
+            </div>
+        </div>
+        <div class="wrapper-right">
+            <form id="login-form" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <div class="login-id">
+                    <label class="login">아이디</label><br>
+                    <input name="userid" type="text">
+                </div>
+                <div class="login-pw">
+                    <label class="login">비밀번호</label><br>
+                    <input name="password" type="password">
+                </div>
+                <div class="login-sb">
+                    <input type="submit" value="로그인">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    
+<!-- 숫자효과 유저들 수 보여주기 -->
+<script>
+    function numberCounter(target_frame, target_number) {
+        this.count = 0; this.diff = 0;
+        this.target_count = parseInt(target_number);
+        this.target_frame = document.getElementById(target_frame);
+        this.timer = null;
+        this.counter();
+    };
+
+    numberCounter.prototype.counter = function () {
+        var self = this;
+        this.diff = this.target_count - this.count;
+
+        if (this.diff > 0) {
+            self.count += Math.ceil(this.diff / 5);
+        }
+
+        this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        if (this.count < this.target_count) {
+            this.timer = setTimeout(function () { self.counter(); }, 20);
+        } else {
+            clearTimeout(this.timer);
+        }
+    };
+    // const choices_name = JSON.parse(user.size());
+    new numberCounter("counter1", 99999);
+    new numberCounter("counter2", 21565748);
+
+</script>
+
+
+{% endblock %}

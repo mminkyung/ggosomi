@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for p in posts %}
+    {{p.title}}
+{% endfor %}
+
+<a href="{% url 'board_new' %}"> 새 글 쓰기 </a>
+
+{% endblock %}
