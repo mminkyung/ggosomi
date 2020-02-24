@@ -187,6 +187,20 @@ table{
 
 /* signup form  */
 
+#checkid{
+    width : 100px;
+    background-color : black;
+    color : white;
+    font-family: "Noto Serif KR";
+}
+#signup_btn{
+    width : 200px;
+    font-size : 2.0rem;
+    background-color : black;
+    color : white;
+    font-family: "Noto Serif KR";
+}
+
 .signup-form{
     text-align : center;
     margin : auto;
@@ -206,6 +220,7 @@ table{
 
 .form{
     width : 300px;
+    font-family: "Noto Serif KR";
 }
 
 .coutereffect{
@@ -231,4 +246,21 @@ table{
 }
 p{
     color : white;
+}
+
+/* mypage */
+.panel{
+    width : 30%;
+    float : left;
+    margin-left : 30px;
+}
+
+.cardimg{
+    width : 80%;
+    height : 300px;
+}
+
+h2{
+    color : white;
+
 }
