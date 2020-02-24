@@ -13,7 +13,7 @@ class Post(models.Model):
     # class Meta:
     #     ordering = ['title']
     user_id = models.IntegerField()
-    # owner = models.CharField(max_length=20, default="???")
+    owner = models.CharField(max_length=20, default="???")
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date_published')
     body = models.TextField()

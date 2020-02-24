@@ -19,6 +19,7 @@ def board_create(request):
     user = request.user
     post = Post()
     post.user_id = user.id
+    post.onwer = user.username
     post.title = request.POST.get('title')
     post.body = request.POST.get('body')
     post.pub_date = timezone.datetime.now()
