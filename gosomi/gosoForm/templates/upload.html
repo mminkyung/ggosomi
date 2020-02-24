@@ -3,6 +3,11 @@
 <br>
 <div class = "upload">
   <h1> 고소하기</h1>
+  <h4> 1. Title 에 고소할 사유를 간단하게 적어주세요</h4>
+  <h4> 2. Image 에 고소할 증거물을 제출해주세요</h4>
+  <h4> 3. Comment 에 고소한 명분과 상황을 자세하게 기재해주세요</h4>
+  <hr style = "width : 50%; float: left;">
+  <br>
 <div class = "post_detail">
   <form class = "upload_form" action = "{% url 'upload' %}" method="POST" enctype="multipart/form-data" style = "width : 90%">
       {% csrf_token %}

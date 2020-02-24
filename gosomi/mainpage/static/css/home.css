@@ -181,6 +181,7 @@ table{
     margin-top : 50px;
     border-spacing: 5px;
     margin-bottom : 50px;
+    color : white;
 }
 
 
@@ -220,4 +221,14 @@ table{
 
 .row{
     margin-bottom : 50px;
+}
+
+
+/* 악플러 고발  */
+.table_post, td{
+    color : white;
+    font-size : 1.0rem;
+}
+p{
+    color : white;
 }

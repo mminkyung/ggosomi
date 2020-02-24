@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{%block content%}
+<div class="container">
+    <table class="table">
+        <thead>
+
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="col">제목</th>
+                <th scope="col">{{post.title}}</th>
+            </tr>
+            <tr>
+                <th scope="col">날짜</th>
+                <th scope="col">{{post.pub_date}}</th>
+            </tr>
+
+            <tr>
+                <th scope="col">내용</th>
+                <th scope="col">{{post.body}}</th>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

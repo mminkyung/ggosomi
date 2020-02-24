@@ -1,9 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<table class = "table_post">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>날짜</th>
+                <th>조회수</th>
+            </tr>
+         </thead>
+        <tbody>   
+        {% for post in page_posts %}
+        <tr>
+            <td id = "blog_id">{{post.id}}</td>
+            <td id = "blog_owner"><a href="{% url 'board_detail' post.id %}">{{post.title}}</a></td>
+            <td id = "blog_date">{{post.pub_date}}</td>
+            <td id = "blog_view">{{post.views}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+        </table>
+
+
+<!-- <div style = "color : white">
 {% for p in posts %}
-    {{p.title}}
+{{p.title}}
+{{p.content}}
 {% endfor %}
+</div> -->
 
 <a href="{% url 'board_new' %}"> 새 글 쓰기 </a>
 

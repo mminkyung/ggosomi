@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action = "{% url 'board' %}" method="POST">
+<form action = "{% url 'board_create' %}" method="POST">
     {% csrf_token %}
-
-    {{ form.as_p }}
+    <p>제목 : </p><input id = "newpost_title" type="text" name="title" style = "width : 50%">
+    <!-- {{ form.as_p }} -->
+    <p>내용 : </p><textarea id = "newpost_body" cols=120 rows=10 name="body" style = "width : 50%"></textarea>
     <input type="submit" value="저장하기"/>
 </form>
 
