@@ -1,9 +1,9 @@
 # INTRODUCE
 
 멋쟁이 사자처럼 코딩테스트 과제물입니다.
-*학교 : 중앙대학교
-*학생1 : 강민경 : mminkyung
-*학생2 : 인세훈 : dlstpgns0406 , oereo
+* 학교 : 중앙대학교
+* 학생1 : 강민경 : mminkyung
+* 학생2 : 인세훈 : dlstpgns0406 , oereo
 
 ## 과제물 내용
 
