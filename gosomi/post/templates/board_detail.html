@@ -21,8 +21,17 @@
         </tr>
 
     </tbody>
-</table>
 
+
+</table>
+{% if user.id == post.user_id %}
+<a href="{% url 'board_delete' post.id %}">
+    <input class="btn btn-info" type="button" value="삭제하기">
+</a>
+<a href="{% url 'board_edit' post.id %}">
+    <input class="btn btn-info" type="button" value="수정하기">
+</a>
+{% endif %}
 
 
 {% endblock %}

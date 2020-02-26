@@ -24,6 +24,7 @@ urlpatterns = [
     path('mainpage/postpage', gosoForm.views.postpage , name = "postpage"),
     # 인증메일 보내기 url
     path('activate/<str:uid64>/<str:token>/', mainpage.views.activate, name='activate'),
+    
 
 ]
 

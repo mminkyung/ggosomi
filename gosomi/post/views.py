@@ -33,3 +33,22 @@ def board_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     post.increaseViews()
     return render(request, 'board_detail.html', {'post': post})
+
+def board_delete(request, post_id):
+    post = Post.objects.filter(id=post_id)
+    post.delete()
+    return redirect('board')
+
+def board_edit(request, post_id):
+    post= get_object_or_404(Post, pk= post_id) 
+    return render(request, 'editboard.html', {'post': post})
+
+def board_update(request,post_id):
+    post= get_object_or_404(Post, pk= post_id) # 특정 객체 가져오기(없으면 404 에러)
+    post.title = request.GET['title'] # 내용 채우기
+    post.body = request.GET['body'] # 내용 채우기
+    post.pub_date = timezone.datetime.now() # 내용 채우기
+    post.save() # 저장하기
+
+    # 새로운 글 url 주소로 이동
+    return redirect('board')
