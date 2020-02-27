@@ -29,7 +29,9 @@
 {{p.content}}
 {% endfor %}
 </div> -->
-
+{% if user.is_authenticated == True %}
 <a href="{% url 'board_new' %}"> 새 글 쓰기 </a>
+{% endif %}
+
 
 {% endblock %}
