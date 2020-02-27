@@ -19,19 +19,25 @@
             <th scope="col">내용</th>
             <th scope="col">{{post.body}}</th>
         </tr>
+        <tr>
+            {% if user.id == post.user_id %}
+            <th scope="col"> </th>
+            <th scope="col"><a href="{% url 'board_delete' post.id %}">
+                    <input id="editDeleteBtn" type="button" value="삭제하기">
+                </a><a href="{% url 'board_edit' post.id %}">
+                    <input id="editDeleteBtn" type="button" value="수정하기">
+                </a></th>
+            {% endif %}
+        </tr>
 
     </tbody>
 
 
 </table>
-{% if user.id == post.user_id %}
-<a href="{% url 'board_delete' post.id %}">
-    <input class="btn btn-info" type="button" value="삭제하기">
-</a>
-<a href="{% url 'board_edit' post.id %}">
-    <input class="btn btn-info" type="button" value="수정하기">
-</a>
-{% endif %}
+
+
+
+
 
 
 {% endblock %}

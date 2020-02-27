@@ -30,7 +30,12 @@
 		<ul>
 			<li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
 			<li class="nav-item"><a href="{% url 'board' %}">악플러 고발</a></li>
+			{% if user.is_authenticated == False %}
+			<li class="nav-item"><a href="{% url 'home' %}" onclick ='mypage_click()'>고소하기</a></li>
+			{% endif %}
+			{% if user.is_authenticated == True %}
 			<li class="nav-item"><a href="{% url 'upload' %}">고소하기</a></li>
+			{% endif %}
 
 			{% if user.is_authenticated %}
 			<li class="nav-item-le"><a href="{% url 'mypage' %}">마이페이지</a></li>
@@ -48,6 +53,11 @@
 	</div>
 
 	<script>
+		// 권한주기
+		function mypage_click() {
+			alert('로그인을 해주세요.');
+		}
+
 		/* 중복체크! */
 		$(function () {
 			/* 아이디 수정했을 때 */

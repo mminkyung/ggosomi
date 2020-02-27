@@ -187,7 +187,7 @@ table{
 
 /* signup form  */
 
-#checkid{
+#checkid, #editDeleteBtn{
     width : 100px;
     background-color : black;
     color : white;
@@ -263,4 +263,9 @@ p{
 h2{
     color : white;
 
+}
+.mypage_padding{
+    padding : 30px;
+    width : 90%;
+    margin : auto;
 }

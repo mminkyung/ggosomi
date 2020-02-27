@@ -4,9 +4,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dlstpgns0406@gmail.com' # ex) 관리자 메일
-EMAIL_HOST_PASSWORD =  ''# ex) 메일비밀번호
+EMAIL_HOST_PASSWORD =  'tpgns5974!'# ex) 메일비밀번호
 SERVER_EMAIL = 'dlstpgns0406@gmail.com' # ex) dlstpgns0406@gmail.com
-DEFAULT_FROM_MAIL = 'dlstpgns'
+DEFAULT_FROM_MAIL = EMAIL_HOST_USER
 
 import os
 
